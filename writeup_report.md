@@ -83,15 +83,15 @@ First I tried different approaches to accomplish a well trained model. I used a 
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that in some of my previous models I had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting.
 
-To combat the overfitting, I modified the model to include dropout layers (2 with 0.1 dropout).
+To combat the overfitting, I modified the model to include dropout layers (2 with 10% dropout).
 
 The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track due to extreme steering angles and oscillation to improve the driving behavior in these cases, I modified the drive.py file to reduce extreme steering angles by toning down the output of the steering angles. I also modified the acceleration of the vehicle, so that it holds the speed around 12 mph and in cases were it drops below 12mph it increases acceleration.
 
-At the end of the process, the vehicle is able to drive autonomously around track 1 without leaving the road. It’s also able to drive on track two (of the old simulator)! (I collected my training data in the old simulator, I hope that’s no problem. At first I didn’t even noticed that the simulator had changed!)
+At the end of the process, the vehicle is able to drive autonomously around track 1 without leaving the road. It’s also able to drive on track two (of the old simulator)! (I collected my training data in the old simulator, I hope that’s no problem. At first I didn’t even noticed that the simulator has changed!)
 
 ####2. Final Model Architecture
 
-The final model architecture (model.py lines 87-113) consisted of a convolution neural network with the following layers and layer sizes: three 5x5 convolutional layers  each followed by max pooling layers. Border mode is ‚valid‘ and my activation is a relu activation. Dropouts were incorporated after the flattening and after the first fully connected layer.
+The final model architecture (model.py lines 87-113) consisted of a convolution neural network with the following layers and layer sizes: three 5x5 convolutional layers each followed by max pooling layers. Border mode is ‚valid‘ and my activation is a relu activation. Dropouts were incorporated after the flattening and after the first fully connected layer.
 
 ####3. Creation of the Training Set & Training Process
 
@@ -107,12 +107,12 @@ I then recorded the vehicle recovering from the left side and right sides of the
 
 Then I repeated this process on track two in order to get more data points.
 
-To augment the data sat, I also flipped images and angles because the  first track is left-turn-dominant and this way the model has equally amounts of right and left turns. I actually used this method but in my own dataset I drove the track backwards, so that it wasn’t necessary anymore. Also I think this could be beneficial, because I don’t drive the same all the time and flipped images would be just the same but upside down, where as my backwards driving could give the model slightly different angles and images which would make the model more robust! For example, here is an image that has then been flipped:
+To augment the data set, I also flipped images and angles because the first track is left-turn-dominant and this way the model has equally amounts of right and left turns. I actually used this method but in my own dataset I drove the track backwards, so that it wasn’t necessary anymore. Also I think this could be beneficial, because I don’t drive the same all the time and flipped images would be just the same but upside down, where as my backwards driving could give the model slightly different angles and images which would make the model more robust! For example, here is an image that has then been flipped:
 
 ![alt text][image5]
 
 
-After the collection process, I had 45,000 data points. I then preprocessed this data by resizing all images to 80 by 160 and cropping the hood to the car and the horizon of the images. And smoothing the angles by applying a rolling mean function on my angle data. Also I used left and right images and added offset to the right and left steering angles.
+After the collection process, I had 45,000 data points. I then preprocessed this data by resizing all images to 80 by 160 and cropping the car's hood and the horizon off the images. And smoothing the angles by applying a rolling mean function on my angle data. Also I used left and right images and added offset to the right and left steering angles.
 
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set.
