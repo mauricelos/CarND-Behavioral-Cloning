@@ -18,7 +18,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./write_up_imgs/center_image.jpg "Normal Image“
+[image1]: ./write_up_imgs/center_image.jpg "Normal Image"
 [image2]: ./write_up_imgs/center_left_recovery.jpg "Recovery Image"
 [image3]: ./write_up_imgs/center_left_recovery1.jpg "Recovery Image"
 [image4]: ./write_up_imgs/center_left_recovery2.jpg "Recovery Image"
