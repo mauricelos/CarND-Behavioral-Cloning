@@ -18,11 +18,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image2]: ./write_up_imgs/center_image.jpg „Normal Image“
-[image3]: ./write_up_imgs/center_left_recovery.jpg "Recovery Image"
-[image4]: ./write_up_imgs/center_left_recovery1.jpg "Recovery Image"
-[image5]: ./write_up_imgs/center_left_recovery2.jpg "Recovery Image"
-[image6]: ./write_up_imgs/center_image_flipped.jpg „Flipped Image"
+[image1]: ./write_up_imgs/center_image.jpg "Normal Image“
+[image2]: ./write_up_imgs/center_left_recovery.jpg "Recovery Image"
+[image3]: ./write_up_imgs/center_left_recovery1.jpg "Recovery Image"
+[image4]: ./write_up_imgs/center_left_recovery2.jpg "Recovery Image"
+[image5]: ./write_up_imgs/center_image_flipped.jpg "Flipped Image"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -97,20 +97,19 @@ The final model architecture (model.py lines 87-113) consisted of a convolution 
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
-![alt text][image2]
+![alt text][image1]
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn how to react in situations, where it isn’t on the ideal route. These images show what a recovery looks like starting from left to center :
 
+![alt text][image2]
 ![alt text][image3]
 ![alt text][image4]
-![alt text][image5]
 
 Then I repeated this process on track two in order to get more data points.
 
 To augment the data sat, I also flipped images and angles because the  first track is left-turn-dominant and this way the model has equally amounts of right and left turns. I actually used this method but in my own dataset I drove the track backwards, so that it wasn’t necessary anymore. Also I think this could be beneficial, because I don’t drive the same all the time and flipped images would be just the same but upside down, where as my backwards driving could give the model slightly different angles and images which would make the model more robust! For example, here is an image that has then been flipped:
 
-![alt text][image6]
-![alt text][image7]
+![alt text][image5]
 
 
 After the collection process, I had 45,000 data points. I then preprocessed this data by resizing all images to 80 by 160 and cropping the hood to the car and the horizon of the images. And smoothing the angles by applying a rolling mean function on my angle data. Also I used left and right images and added offset to the right and left steering angles.
